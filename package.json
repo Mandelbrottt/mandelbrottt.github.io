@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "deploy": "tsc && vite build && gh-pages -d ./dist/"
   },
   "devDependencies": {
     "@types/three": "^0.130.1",

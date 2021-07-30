@@ -51,7 +51,7 @@ Array(200).fill(0).forEach(addStar);
 
 // -- Avatar --
 
-const mylesTexture = new THREE.TextureLoader().load('images/anime.png');
+const mylesTexture = new THREE.TextureLoader().load('anime.png');
 
 const myles = new THREE.Mesh(
   new THREE.BoxGeometry(3, 3, 3),
@@ -62,7 +62,7 @@ scene.add(myles);
 
 // -- Moon --
 
-const moonTexture = new THREE.TextureLoader().load('images/jobsdone.png');
+const moonTexture = new THREE.TextureLoader().load('jobsdone.png');
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
