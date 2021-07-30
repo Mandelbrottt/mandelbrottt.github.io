@@ -25,9 +25,13 @@ scene.add(torus);
 
 const pointLight = new THREE.PointLight(0xFFFFFF);
 pointLight.position.set(5, 5, 5);
+pointLight.intensity = 2;
 
 const ambientLight = new THREE.AmbientLight(0xFFFFFF);
+ambientLight.intensity = 0.1;
 scene.add(pointLight, ambientLight);
+
+pointLight.parent = torus;
 
 const lightHelper = new THREE.PointLightHelper(pointLight);
 const gridHelper = new THREE.GridHelper(200, 50);
@@ -44,29 +48,53 @@ function addStar() {
   const [x, y, z] = Array(3).fill(0).map(() => THREE.MathUtils.randFloatSpread(100));
 
   star.position.set(x, y, z);
-  scene.add(star); 
+  scene.add(star);
 }
 
 Array(200).fill(0).forEach(addStar);
 
+const spaceTexture = new THREE.TextureLoader().load('sea.jpg');
+scene.background = spaceTexture;
+
+const cubeLoader = new THREE.CubeTextureLoader();
+cubeLoader.setPath('skybox/');
+let textureCube = cubeLoader.load(['sea_rt.jpg', 'sea_lf.jpg', 'sea_up.jpg', 'sea_dn.jpg', 'sea_bk.jpg', 'sea_ft.jpg']);
+textureCube.encoding = THREE.sRGBEncoding;
+
+scene.background = textureCube;
+
+const textureLoader = new THREE.TextureLoader();
+
 // -- Avatar --
 
-const mylesTexture = new THREE.TextureLoader().load('anime.png');
+const brickWallTexture = textureLoader.load('brickwall.jpg');
+// brickWallTexture.encoding = THREE.sRGBEncoding;
+
+const brickWallNormal = textureLoader.load('brickwall_normal.jpg');
 
 const myles = new THREE.Mesh(
   new THREE.BoxGeometry(3, 3, 3),
-  new THREE.MeshBasicMaterial({ map: mylesTexture }),
+  new THREE.MeshStandardMaterial({
+    map: brickWallTexture,
+    normalMap: brickWallNormal,
+  }),
 );
 
 scene.add(myles);
 
 // -- Moon --
 
-const moonTexture = new THREE.TextureLoader().load('jobsdone.png');
+const pineTexture = textureLoader.load('pine.jpg');
+pineTexture.encoding = THREE.sRGBEncoding;
+
+const pineNormal = textureLoader.load('pine_normal.jpg');
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
-  new THREE.MeshBasicMaterial({ map: moonTexture }),
+  new THREE.MeshStandardMaterial({
+    map: brickWallTexture,
+    normalMap: brickWallNormal,
+  }),
 );
 
 moon.position.set(-10, -10, -10);
@@ -120,7 +148,7 @@ function animate(timestamp: number) {
 }
 
 function update() {
-  torus.rotation.x += 0.1 * dt;
+  torus.rotation.x += 0.5 * dt;
   torus.rotation.y += 0.5 * dt;
   torus.rotation.z += 0.1 * dt;
 
