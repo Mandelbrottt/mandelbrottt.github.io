@@ -25,10 +25,10 @@ scene.add(torus);
 
 const pointLight = new THREE.PointLight(0xFFFFFF);
 pointLight.position.set(5, 5, 5);
-pointLight.intensity = 2;
+pointLight.intensity = 1;
 
 const ambientLight = new THREE.AmbientLight(0xFFFFFF);
-ambientLight.intensity = 0.1;
+ambientLight.intensity = 0.5;
 scene.add(pointLight, ambientLight);
 
 pointLight.parent = torus;
@@ -53,15 +53,13 @@ function addStar() {
 
 Array(200).fill(0).forEach(addStar);
 
-const spaceTexture = new THREE.TextureLoader().load('sea.jpg');
-scene.background = spaceTexture;
-
 const cubeLoader = new THREE.CubeTextureLoader();
 cubeLoader.setPath('skybox/');
 let textureCube = cubeLoader.load(['sea_rt.jpg', 'sea_lf.jpg', 'sea_up.jpg', 'sea_dn.jpg', 'sea_bk.jpg', 'sea_ft.jpg']);
 textureCube.encoding = THREE.sRGBEncoding;
+textureCube.mapping = THREE.CubeRefractionMapping;
 
-scene.background = textureCube;
+scene.environment = textureCube;
 
 const textureLoader = new THREE.TextureLoader();
 
@@ -84,16 +82,10 @@ scene.add(myles);
 
 // -- Moon --
 
-const pineTexture = textureLoader.load('pine.jpg');
-pineTexture.encoding = THREE.sRGBEncoding;
-
-const pineNormal = textureLoader.load('pine_normal.jpg');
-
 const moon = new THREE.Mesh(
-  new THREE.SphereGeometry(3, 32, 32),
-  new THREE.MeshStandardMaterial({
-    map: brickWallTexture,
-    normalMap: brickWallNormal,
+  new THREE.IcosahedronGeometry(3, 16),
+  new THREE.MeshLambertMaterial({
+    envMap: textureCube,
   }),
 );
 
