@@ -59,7 +59,7 @@ let textureCube = cubeLoader.load(['sea_rt.jpg', 'sea_lf.jpg', 'sea_up.jpg', 'se
 textureCube.encoding = THREE.sRGBEncoding;
 textureCube.mapping = THREE.CubeRefractionMapping;
 
-scene.environment = textureCube;
+scene.background = textureCube;
 
 const textureLoader = new THREE.TextureLoader();
 
