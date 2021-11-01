@@ -8,6 +8,7 @@
     "deploy": "tsc && vite build && gh-pages -d ./dist/"
   },
   "devDependencies": {
+    "@types/node": "^16.11.6",
     "@types/three": "^0.130.1",
     "three": "^0.131.1"
   },
