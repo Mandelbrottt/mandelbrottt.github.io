@@ -1,15 +1,16 @@
 {
-  "name": "threetsdemo",
+  "name": "mandelsite",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
+    "preview": "tsc && vite build && vite preview",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "deploy": "tsc && vite build && gh-pages -d ./dist/"
   },
   "devDependencies": {
     "@types/node": "^16.11.6",
-    "@types/three": "^0.130.1",
+    "@types/three": "^0.131.1",
     "three": "^0.131.1"
   },
   "dependencies": {

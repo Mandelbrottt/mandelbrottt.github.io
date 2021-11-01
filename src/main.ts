@@ -9,9 +9,10 @@ const scene = new THREE.Scene();
 const aspectRatio = window.innerWidth / window.innerHeight;
 const camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.1, 1000);
 camera.position.z = 30;
+camera.position.x = -3;
 
 const renderer = new THREE.WebGLRenderer({
-  canvas: document.querySelector('#bg') as HTMLCanvasElement
+	canvas: document.querySelector('#bg') as HTMLCanvasElement
 });
 
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -41,14 +42,14 @@ scene.add(lightHelper, gridHelper);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 function addStar() {
-  const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-  const material = new THREE.MeshStandardMaterial({ color: 0xFFFFFF });
-  const star = new THREE.Mesh(geometry, material);
+	const geometry = new THREE.SphereGeometry(0.25, 24, 24);
+	const material = new THREE.MeshStandardMaterial({ color: 0xFFFFFF });
+	const star = new THREE.Mesh(geometry, material);
 
-  const [x, y, z] = Array(3).fill(0).map(() => THREE.MathUtils.randFloatSpread(100));
+	const [x, y, z] = Array(3).fill(0).map(() => THREE.MathUtils.randFloatSpread(100));
 
-  star.position.set(x, y, z);
-  scene.add(star);
+	star.position.set(x, y, z);
+	scene.add(star);
 }
 
 Array(200).fill(0).forEach(addStar);
@@ -71,11 +72,11 @@ const brickWallTexture = textureLoader.load('brickwall.jpg');
 const brickWallNormal = textureLoader.load('brickwall_normal.jpg');
 
 const myles = new THREE.Mesh(
-  new THREE.BoxGeometry(3, 3, 3),
-  new THREE.MeshStandardMaterial({
-    map: brickWallTexture,
-    normalMap: brickWallNormal,
-  }),
+	new THREE.BoxGeometry(3, 3, 3),
+	new THREE.MeshStandardMaterial({
+		map: brickWallTexture,
+		normalMap: brickWallNormal,
+	}),
 );
 
 scene.add(myles);
@@ -83,25 +84,45 @@ scene.add(myles);
 // -- Moon --
 
 const moon = new THREE.Mesh(
-  new THREE.IcosahedronGeometry(3, 16),
-  new THREE.MeshLambertMaterial({
-    envMap: textureCube,
-  }),
+	new THREE.IcosahedronGeometry(3, 16),
+	new THREE.MeshLambertMaterial({
+		envMap: textureCube,
+	}),
 );
 
 moon.position.set(-10, -10, -10);
 
 scene.add(moon);
 
+// moon.position.z = 30;
+// moon.position.x = -10;
+
+function moveCamera() {
+	const t = document.body.getBoundingClientRect().top;
+
+	moon.rotation.x += 0.05;
+	moon.rotation.y += 0.075;
+	moon.rotation.z += 0.05;
+
+	myles.rotation.y += 0.01;
+	myles.rotation.z += 0.01;
+
+	camera.position.z = 5 + t * -0.01;
+	camera.position.y = t * -0.0002;
+	camera.position.x = t * -0.0002;
+}
+
+document.body.onscroll = moveCamera;
+
 // -- Renderloop --
 
 window.addEventListener('resize', onWindowResize, false);
 function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+	renderer.setSize(window.innerWidth, window.innerHeight);
 
-  requestAnimationFrame(animate);
+	requestAnimationFrame(animate);
 }
 
 let startTimeStamp: number
@@ -111,44 +132,44 @@ let elapsed: number;
 let dt: number;
 
 function init(timestamp: number) {
-  startTimeStamp = timestamp;
-  previousTimeStamp = timestamp;
+	startTimeStamp = timestamp;
+	previousTimeStamp = timestamp;
 
-  elapsed = timestamp - startTimeStamp;
-  elapsed /= 1000;
+	elapsed = timestamp - startTimeStamp;
+	elapsed /= 1000;
 
-  dt = timestamp - previousTimeStamp;
-  dt /= 1000;
+	dt = timestamp - previousTimeStamp;
+	dt /= 1000;
 
-  requestAnimationFrame(animate);
+	requestAnimationFrame(animate);
 }
 
 function animate(timestamp: number) {
-  requestAnimationFrame(animate);
+	requestAnimationFrame(animate);
 
-  elapsed = timestamp - startTimeStamp;
-  elapsed /= 1000;
+	elapsed = timestamp - startTimeStamp;
+	elapsed /= 1000;
 
-  dt = timestamp - previousTimeStamp;
-  dt /= 1000;
+	dt = timestamp - previousTimeStamp;
+	dt /= 1000;
 
-  update();
+	update();
 
-  render();
+	render();
 
-  previousTimeStamp = timestamp;
+	previousTimeStamp = timestamp;
 }
 
 function update() {
-  torus.rotation.x += 0.5 * dt;
-  torus.rotation.y += 0.5 * dt;
-  torus.rotation.z += 0.1 * dt;
+	torus.rotation.x += 0.5 * dt;
+	torus.rotation.y += 0.5 * dt;
+	torus.rotation.z += 0.1 * dt;
 
-  controls.update();
+	controls.update();
 }
 
 function render() {
-  renderer.render(scene, camera);
+	renderer.render(scene, camera);
 }
 
 requestAnimationFrame(init);
