@@ -9,15 +9,17 @@ weight: 3
 
 # **About Me**
 
-Hey there, I'm **{{ site.author.name }}** :wave:,
+##### Hey there, I'm **{{ site.author.name }}** :wave: I'm a passionate backend and game systems developer, and I'm always looking to learn more and get better with the technologies I use. I use my experience both to produce better systems and code, and to help my peers further their understanding as well.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+<!-- Like many others in the games industry, games were a huge part of my life growing up, especially puzzle and adventure games where you need to learn the game inside and out to succeed.  -->
+
+##### My passion lies in the game dev space, though less so in creating games themselves. I prefer bringing to life the tools and technologies behind them. When making a game, you need to have a solid set of tools to support development, and that's where I come in. I find the engineering of underlying data systems and APIs fascinating, and love the challenge of carving my own path towards a solution with no definite answer that fits the needs of the system. I consider code readability paramount, as it promotes understanding and leads to more robust solutions.
 
 <div class="row">
 {% include about/skills.html title="Programming Skills" source=site.data.programming-skills %}
 {% include about/skills.html title="Other Skills" source=site.data.other-skills %}
 </div>
 
-<div class="row">
+<!-- <div class="row">
 {% include about/timeline.html %}
-</div>
+</div> -->
