@@ -1,9 +1,9 @@
 ### Site Settings ###
 title               : Myles Cragg
 description         : >-
-                      I turn coffee :coffee: into code,
-                      use tabs over spaces
-                      and never broke production.
+                      I'm a code architect, crafting elegant APIs
+                      and efficient code that would make a 
+                      grown man cry.
 baseurl             : "" # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 remote_theme        : YoussefRaafatNasry/portfolYOU
 open_new_tab        : false # Opens external URLs in new tab (works for posts, projects and navbar only)

@@ -7,4 +7,8 @@ description: Avanzar is a roguelike FPS game that takes place in an ancient Meso
 
 {% include elements/video.html id="HWpSFnY2huk" %}
 
+<p class="text-center"> 
+    {% include elements/button.html link="https://mvine.itch.io/avanzar" text="Check it out on Itch.io!" %}
+</p>
+
 ## More info to come...
