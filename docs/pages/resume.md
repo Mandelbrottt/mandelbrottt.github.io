@@ -3,6 +3,7 @@ layout: page
 title: Resume
 permalink: /resume/
 weight: 3
+external_url: /assets/MylesCragg_Resume.pdf
 ---
 
 [![MylesCragg_Resume](/assets/MylesCragg_Resume.png)](/assets/MylesCragg_Resume.pdf)
