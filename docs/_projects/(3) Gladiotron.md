@@ -6,5 +6,5 @@ description: A story-driven, 3rd person action-adventure game with scaffolded ga
 ---
 
 <p class="text-center"> 
-    {% include elements/button.html link="https://https://gladiotron.com/" text="Check out the official website!" %}
+    {% include elements/button.html link="https://gladiotron.com/" text="Check out the official website!" %}
 </p>
