@@ -5,7 +5,7 @@ permalink: /about/
 weight: 3
 ---
 
-![MylesCragg](/assets/MylesCragg.png)
+![MylesCragg](/assets/r2cc-edited.jpg)
 
 # **About Me**
 

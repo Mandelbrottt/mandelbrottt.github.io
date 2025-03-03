@@ -1,9 +1,8 @@
 ### Site Settings ###
 title       : Myles Cragg
 description : >-
-              I'm an engine and tools programmer that is always
-              trying to expand my knowledge of the technologies I use,
-              and is also on the lookout for new ones to improve my workflow.                      
+              I'm a tools programmer with build system engineering experience.
+              I specialize in C++ and C#, writing automation tools and scripts for build pipelines.
 baseurl     : "" # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 url         : "https://www.mylescragg.ca"
 remote_theme: YoussefRaafatNasry/portfolYOU
@@ -25,10 +24,10 @@ nav_exclude:                                            # The following paths ar
 ### Author Info ###
 author:
   name              : Myles Cragg
-  image             : /assets/MylesCragg.png
+  image             : /assets/OK_BABY_OK.png
   # behance           : your_username
   # dribbble          : your_username
-  email             : cragg.myles@gmail.com
+  email             : contact@mylescragg.ca
   # facebook          : your_username
   github            : Mandelbrottt
   # gitlab            : your_username
